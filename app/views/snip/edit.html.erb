@@ -26,7 +26,7 @@
 <h2><%= l(:snipish_add_title) %></h2>
 
 <div id="snipish">
-	<%= form_tag("/snipish_saveedit", method: "get") do %>
+	<%= form_tag("/snipish_saveedit", method: "post") do %>
 		<%= hidden_field_tag 'item', params[:item] %>
 			<label for="snip_name"><%= l(:snipish_add_name) %></label>
 			<%= text_field(:snip, :name, size: 20, value: @edit.name, :required => true) %>

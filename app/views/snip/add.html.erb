@@ -20,12 +20,12 @@
 <h2><%= l(:snipish_add_title) %></h2>
 
 <div id="snipish">
-	<%= form_tag("/snipish_save", method: "get") do %>
+	<%= form_tag("/snipish_save", method: "post") do %>
 			<label for="snip_name"><%= l(:snipish_add_name) %></label>
 			<%= text_field(:snip, :name, size: 20, :required => true) %>
 		<div class="clear"></div>
 			<label for="snip_description"><%= l(:snipish_add_description) %></label>
-			<%= text_field(:snip, :description, size: 20, :required => true) %>
+			<%= text_area(:snip, :description, cols: 20, rows: 4, :required => true) %>
 		<div class="clear"></div>
 			<label for="snip_tag"><%= l(:snipish_add_tag) %></label>
 			<%= text_field(:snip, :tag, size: 20, id: 'myTags') %>
