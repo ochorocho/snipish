@@ -1,0 +1,336 @@
+#top-menu a.snipish {
+    background-position: 0px center;
+	background-image: url("../images/cut.png");
+    background-repeat: no-repeat;
+    padding-bottom: 3px;
+    padding-left: 20px;
+    padding-top: 2px;
+}
+
+.controller-snip #content {
+	position: relative;
+	padding-right: 26%;
+}
+
+.controller-snip #content #sidebar {
+    float: right;
+    margin: 0;
+    padding: 0px 10px;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    width: 22%;
+    z-index: 9;
+    display: block !important;
+    background: #E8EAEC;
+    border-left: 1px solid #DDDDDD;
+}
+
+#sidebar .codetype, #sidebar .latest a {
+	padding: 4px 0 4px 0px;
+}
+
+#sidebar .latest a {
+	background-position: left center !important;
+	background-size: 14px auto;
+	padding-left: 20px !important;
+	vertical-align: middle;
+}
+
+input#snipSearch {
+	display: block;
+	border: 1px solid #99999 !important;
+	width: 97% !important;
+	padding: 4px 10px;
+	font-size: 16px !important;
+}
+
+span.type {
+	padding: 8px 5px;
+	line-height: 2px;
+    display: block;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    background-color: #467aa7;
+    color: white;
+    text-align: center;
+    font-size: 11px;
+    float: right;
+}
+
+span.description {
+	font-size: 9px !important;
+	line-height: 1px !important;
+}
+
+span.comitter {
+	float: right;
+	font-size: 10px;
+}
+
+#snipish label {
+	margin: 5px !important;
+	float: left;
+	font-weight: bold;
+}
+
+#snipish input {
+	float: right;
+	width: 73%;
+}
+
+#snip_codetype {
+	float: right;
+	width: 74%;
+}
+
+.tagit {
+	float: right;
+	width: 72%;
+}
+
+
+#snipish textarea {
+	display: block;
+	clear: left;
+	float: right;
+	width: 99% !important;
+}
+
+#snipish div {
+	float: none;
+	clear: both;
+}
+
+#snipish div.clear {
+	padding: 5px;
+	clear: both;
+}
+
+.tagit-new input {
+	width: 100% !important;
+	background: transparent;
+}
+
+.tagit.ui-widget.ui-widget-content.ui-corner-all {
+	border-radius: 0px !important;
+	padding: 1px 7px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.tagit.ui-widget-content {
+	background: transparent!important;
+}
+
+.detailTags.ui-widget-content {
+	border: 0px !important;
+	float: left;
+}
+
+.detailTags li a {
+	font-size: 12px !important;
+}
+
+ul.detailTags li.tagit-choice-read-only {
+	padding: 0 3px 2px !important;	
+}
+
+#snipContent {
+	margin-top: 60px;
+	font-size: 14px;
+}
+
+table#snips td {
+	padding: 5px 3px;	
+}
+
+table#snips, table#snips thead, table#snips tbody {
+	width: 100%;
+}
+
+table#snips .name {
+	width: 20%;
+}
+
+table#snips .description {
+	width: 52%;
+	font-size: 10px;
+}
+
+table#snips .codetype, table#snips .author {
+	width: 10%;
+	text-align: center;
+}
+
+table#snips .author {
+	width: 20%;	
+}
+
+
+.codetype div {
+	display: inline-block;
+	text-indent: -500px;
+	overflow: hidden;
+}
+
+.codetype .php {
+	background: url("../images/icons/php_logo.svg") no-repeat;
+	background-size: 34px auto;
+	width: 34px;
+	height: 18px;
+}
+
+.codetype .css {
+	background: url("../images/icons/css_logo.svg") no-repeat;
+	background-size: auto 30px;
+	width: 20px;
+	height: 30px;
+}
+
+.codetype .html {
+	background: url("../images/icons/html_logo.svg") no-repeat center center;
+	background-size: auto 30px;
+	width: 24px;
+	height: 30px;
+}
+
+.codetype .js {
+	background: url("../images/icons/js_logo.svg") no-repeat center center;
+	background-size: auto 30px;
+	width: 24px;
+	height: 30px;
+}
+
+.codetype .ruby {
+	background: url("../images/icons/ruby_logo.svg") no-repeat center center;
+	background-size: auto 24px;
+	width: 24px;
+	height: 24px;
+}
+
+.codetype .python {
+	background: url("../images/icons/python_logo.svg") no-repeat center center;
+	background-size: auto 24px;
+	width: 24px;
+	height: 24px;
+}
+
+.codetype .xml {
+	background: url("../images/icons/xml_logo.svg") no-repeat center center;
+	background-size: 34px auto;
+	width: 34px;
+	height: 14px;
+}
+
+.codetype .sql {
+	background: url("../images/icons/sql_logo.svg") no-repeat center center;
+	background-size: auto 30px;
+	width: 24px;
+	height: 24px;
+}
+
+.codetype .yaml {
+	background: url("../images/icons/yaml_logo.svg") no-repeat center center;
+	background-size: 34px auto;
+	width: 34px;
+	height: 13px;
+}
+
+.codetype .sass {
+	background: url("../images/icons/sass_logo.svg") no-repeat center center;
+	background-size: auto 25px;
+	width: 34px;
+	height: 26px;
+}
+
+.codetype .typoscript {
+	background: url("../images/icons/typoscript_logo.svg") no-repeat center center;
+	background-size: auto 25px;
+	width: 34px;
+	height: 26px;
+}
+
+.codetype .bash {
+	background: url("../images/icons/bash_logo.svg") no-repeat center center;
+	background-size: auto 25px;
+	width: 34px;
+	height: 26px;
+}
+
+.codetype .sql {
+	background: url("../images/icons/sql_logo.svg") no-repeat center center;
+	background-size: auto 25px;
+	width: 26px;
+	height: 26px;
+}
+
+#detail .type {
+	float: right;
+	text-align: center;
+}
+
+#detail .author {
+	background: url("../../../images/user.png") no-repeat left center;
+	display: inline-block;
+	padding-left: 20px;
+	margin-top: 10px;
+	font-size: 12px;
+}
+
+#detail #edit {
+	background: url("../images/edit.png") no-repeat center center;
+	width: 20px;
+	height: 16px;
+	margin-top: 2px;
+	display: inline-block;
+}
+
+.contextual .icon-reset {
+	background: url("../images/reset.png") no-repeat left center;
+	margin-top: 2px;
+	display: inline-block;
+}
+
+.contextual .icon-delete {
+	background: url("../images/delete.png") no-repeat left center;
+	margin-top: 2px;
+	display: inline-block;
+}
+
+#detail h3 {
+	margin-top: 20px;
+}
+
+#detail .description {
+	margin-bottom: 10px;
+}
+
+#detail .tag {
+	cursor: pointer;
+}
+
+.browse .count {
+	float: right;
+}
+
+.browse .pagination {
+	text-align: center;
+}
+
+.browse .info {
+	border-bottom: 1px solid #dddddd;
+	padding: 3px 0px;
+	font-size: 10px !important;
+	margin-top: 4px;
+}
+
+input#snip_description {
+	height: 80px;
+}
+
+textarea#snip_description {
+	width: 73.2% !important;
+	clear: none !important;
+}

@@ -1,0 +1,74 @@
+<% locale = User.current.language.blank? ? ::I18n.locale : User.current.language %>
+
+<% html_title l(:snipish_add_title) %>
+
+<% content_for :header_tags do %>
+    <%= stylesheet_link_tag 'style', :plugin => 'snipish' %>
+    <%= stylesheet_link_tag 'jquery.tagit.css', :plugin => 'snipish' %>
+
+    <%= javascript_include_tag 'tag-it', :plugin => 'snipish' %>
+    <%= javascript_include_tag 'edit_add', :plugin => 'snipish' %>
+
+	<script type="text/javascript">		
+		TAG_URL = '<%= url_for :controller => 'snip', :action => 'searchtags' %>';
+		REF_URL = '<%= url_for :controller => 'snip', :action => 'searchrefs' %>';
+		LIST_URL = '<%= url_for :controller => 'snip', :action => 'index' %>';
+	</script>
+
+<% end %>
+
+<h2><%= l(:snipish_add_title) %></h2>
+
+<div id="snipish">
+	<%= form_tag("/snipish_save", method: "get") do %>
+			<label for="snip_name"><%= l(:snipish_add_name) %></label>
+			<%= text_field(:snip, :name, size: 20, :required => true) %>
+		<div class="clear"></div>
+			<label for="snip_description"><%= l(:snipish_add_description) %></label>
+			<%= text_field(:snip, :description, size: 20, :required => true) %>
+		<div class="clear"></div>
+			<label for="snip_tag"><%= l(:snipish_add_tag) %></label>
+			<%= text_field(:snip, :tag, size: 20, id: 'myTags') %>
+		<div class="clear"></div>
+			<div class="ref">
+				<label for="snip_ref"><%= l(:snipish_add_ref) %></label>
+				<%= text_field(:snip, :ref, size: 20) %>
+			</div>
+		<div class="clear"></div>
+			<label for="snip_codetype"><%= l(:snipish_add_type) %></label>
+			<%= select_tag(:snip_codetype, options_for_select([['', ''],
+				['bash', 'bash'],
+				['html', 'html'],
+				['php', 'php'],
+				['js', 'js'],
+				['css', 'css'],
+				['typoscript', 'typoscript'],
+				['ruby', 'ruby'],
+				['python', 'python'],
+				['xml', 'xml'],
+				['sql', 'sql'],
+				['yaml', 'yaml'],
+				['sass', 'sass']], 2), :required => true)
+			%>
+		<div class="clear"></div>
+			<label for="from"><%= l(:snipish_add_code) %></label>
+			<%= text_area(:snip, :code, cols: 20, rows: 24, :required => true) %>
+		<div class="clear"></div>
+			<%= button_tag l(:snipish_add_title), data: { disable_with: l(:snipish_add_wait) } %>
+			<%= link_to l(:snipish_add_cancel),
+				{:controller => "snip", :action => "index"}
+			%>
+
+	<% end %>
+</div>
+
+
+
+<div id="sidebar">
+	<div class="latest">
+		<h3><%= l(:snipish_latest)%></h3>
+		<% for snip in @latest -%>
+			<div class="codetype"><a class="<%= snip.codetype %>" href="<%= snip.id %>"><%= snip.name %></a></div>
+		<% end -%>
+	</div>
+</div>

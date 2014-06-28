@@ -1,0 +1,135 @@
+<% locale = User.current.language.blank? ? ::I18n.locale : User.current.language %>
+
+<% html_title l(:snipish_index_title) %>
+
+<% content_for :header_tags do %>
+
+    <%= stylesheet_link_tag 'style', :plugin => 'snipish' %>
+    <%= stylesheet_link_tag 'jquery.tagit.css', :plugin => 'snipish' %>
+    <%= stylesheet_link_tag 'syntax_highlighter/shCoreDefault.css', :plugin => 'snipish' %>
+    
+    <%= javascript_include_tag 'script', :plugin => 'snipish' %>
+    <%= javascript_include_tag 'syntax_highlighter/shCore.js', :plugin => 'snipish' %>
+    <%= javascript_include_tag 'syntax_highlighter/shBrushBash.js', :plugin => 'snipish' %>
+
+	<%= javascript_include_tag 'syntax_highlighter/shBrushPhp.js', :plugin => 'snipish' %>
+	<%= javascript_include_tag 'syntax_highlighter/shBrushJScript.js', :plugin => 'snipish' %>
+	<%= javascript_include_tag 'syntax_highlighter/shBrushCss.js', :plugin => 'snipish' %>
+	<%= javascript_include_tag 'syntax_highlighter/shBrushTyposcript.js', :plugin => 'snipish' %>
+	<%= javascript_include_tag 'syntax_highlighter/shBrushRuby.js', :plugin => 'snipish' %>
+	<%= javascript_include_tag 'syntax_highlighter/shBrushPython.js', :plugin => 'snipish' %>
+	<%= javascript_include_tag 'syntax_highlighter/shBrushXml.js', :plugin => 'snipish' %>
+	<%= javascript_include_tag 'syntax_highlighter/shBrushSql.js', :plugin => 'snipish' %>
+	<%= javascript_include_tag 'syntax_highlighter/shBrushSass.js', :plugin => 'snipish' %>
+	<%= javascript_include_tag 'syntax_highlighter/shBrushYaml.js', :plugin => 'snipish' %>
+
+
+    <%= javascript_include_tag 'tag-it', :plugin => 'snipish' %>
+
+<% end %>
+
+<script type="text/javascript">		
+	SEARCH_REQUEST = '<%= url_for :controller => 'snip', :action => 'search' %>';
+	DETAIL_REQUEST = '<%= url_for :controller => 'snip', :action => 'detail' %>';
+	EDIT_URL = '<%= url_for :controller => 'snip', :action => 'edit' %>';
+	LIST_URL = '<%= url_for :controller => 'snip', :action => 'index' %>';
+	<% if !params[:item].nil? %>
+		loadDetail(<%= params[:item] %>);
+	<% end %>
+	
+</script>
+
+	<% if !params[:item].nil? %>
+<style type="text/css">
+		#snips, .browse {
+			display: none;
+			visibility: hidden;
+		}
+</style>
+	<% end %>
+
+
+
+<div class="contextual">
+<%= link_to l(:snipish_reset),
+	{:controller => "snip", :action => "index"},
+	:class => "icon icon-reset"
+%>
+
+<%= link_to l(:snipish_add),
+	{:controller => "snip", :action => "add"},
+	:class => "icon icon-add"
+%>
+</div>
+<h2><%= l(:snipish_index_title)%></h2>
+
+
+
+<div id="snipish">
+	<input type="text" placeholder="<%= l(:snipish_search)%>" id="snipSearch">
+</div>
+
+<div id="sidebar">
+	<div class="latest">
+		<h3><%= l(:snipish_latest)%></h3>
+		<% for snip in @latest -%>
+			<div class="codetype"><a class="<%= snip.codetype %>" href="<%= snip.id %>"><%= snip.name %></a></div>
+		<% end -%>
+	</div>
+</div>
+<div id="snipContent">
+	<div class="browse">
+		<div class="info">
+		<%= will_paginate(@snippers, :previous_label => '«', :next_label => '»') %>
+		<%= page_entries_info(@snippers) %>
+		<div class="count">
+		<%= link_to '50',
+			{:controller => "snip", :action => "index", :per_page => '50', :tag => params[:tag]}
+		%>
+		<%= link_to '100',
+			{:controller => "snip", :action => "index", :per_page => '100', :tag => params[:tag]}
+		%>
+		<%= link_to '150',
+			{:controller => "snip", :action => "index", :per_page => '150', :tag => params[:tag]}
+		%>
+		</div>
+		</div>
+	</div>
+	<table id="snips">
+		<thead>
+			<th class="name"><%= l(:snipish_add_name)%></th>
+			<th class="description"><%= l(:snipish_add_description)%></th>
+			<th class="codetype"><%= l(:snipish_add_codetype)%></th>
+			<th class="modified"><%= l(:snipish_add_last_modified_by)%></th>
+		</thead>
+	<% for snip in @snips -%>
+		<tbody>
+		<tr class="<%= cycle('odd', 'even') %>">
+			<td class="name"><a href="<%= snip.id %>"><%= snip.name %></a></td>
+			<td class="description"><%= snip.description %></td>
+			<td class="codetype"><div title="<%= snip.codetype %>" class="<%= snip.codetype %>"><%= snip.codetype %></div></td>
+			<td class="author"><%= snip.last_modified_by %></td>
+		</tr>
+		</tbody>
+	<% end -%>
+	</table>
+	
+	<div class="browse">
+		<div class="info">
+		<%= will_paginate(@snippers, :previous_label => '«', :next_label => '»') %>
+		<%= page_entries_info(@snippers) %>
+		<div class="count">
+		<%= link_to '50',
+			{:controller => "snip", :action => "index", :per_page => '50', :tag => params[:tag]}
+		%>
+		<%= link_to '100',
+			{:controller => "snip", :action => "index", :per_page => '100', :tag => params[:tag]}
+		%>
+		<%= link_to '150',
+			{:controller => "snip", :action => "index", :per_page => '150', :tag => params[:tag]}
+		%>
+		</div>
+		</div>
+	</div>
+</div>
+

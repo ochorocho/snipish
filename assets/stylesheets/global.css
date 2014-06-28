@@ -1,0 +1,8 @@
+#top-menu a.snipish {
+    background-position: 0px center;
+	background-image: url("../images/cut.png");
+    background-repeat: no-repeat;
+    padding-bottom: 3px;
+    padding-left: 20px;
+    padding-top: 2px;
+}
