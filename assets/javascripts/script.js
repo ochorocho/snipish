@@ -6,7 +6,6 @@ function loadDetail(id) {
 	var params = 'item=' + id;
 	//localStorage.returnUrl = window.location;
 	sessionStorage.setItem("returnUrl", window.location);
-	$('.contextual').find('.icon-cancel').delay(400).remove();
 	
 	$.ajax({
 		dataType: "text",
@@ -28,7 +27,8 @@ function loadDetail(id) {
 				+ '<div class="clear"></div>'
 				+ '<h3>Code</h3>'
 				+ '<div class="codeBlock"><pre class="brush: ' + obj.codetype + ';">' + obj.code + '</pre></div>';
-		
+
+			$('.contextual').find('.icon-cancel').remove();		
 			$('.contextual').prepend('<a class="icon icon-cancel" href="#">Zurück</a>');				
 
 			
@@ -60,7 +60,6 @@ $(function() {
 		e.preventDefault();
 		var id = $(this).attr('href');
 		loadDetail(id);
-		$('.contextual').find('.icon-cancel').delay(400).remove();
 	});
 
 	$(".codetype div").tooltip({position: { my: "left+15 center", at: "right center" } });
