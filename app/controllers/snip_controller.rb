@@ -57,11 +57,49 @@ class SnipController < ApplicationController
   end
 
   def add
+	#### USER PERMISSION HACK
+	@usersGroup = User.current.groups.all
+	@usersGroup.each do |group|
+
+		@settings = Setting.plugin_snipish["snipish_group"]
+		@groupIds = []
+		if @settings.nil?
+			@UserAllowed = 'false'
+		else
+			@settings = Setting.plugin_snipish["snipish_group"]["#{group.id}"]
+			if @settings.blank?
+				@UserAllowed = 'false'
+			else 
+				@UserAllowed = 'true'
+				@groupIds << group.id
+			end
+		end			
+	end
+
 	@snip = Snip.new
 	@latest = Snip.find(:all, :order => 'last_modified DESC', :limit => 10)
   end
 
   def edit
+	#### USER PERMISSION HACK
+	@usersGroup = User.current.groups.all
+	@usersGroup.each do |group|
+
+		@settings = Setting.plugin_snipish["snipish_group"]
+		@groupIds = []
+		if @settings.nil?
+			@UserAllowed = 'false'
+		else
+			@settings = Setting.plugin_snipish["snipish_group"]["#{group.id}"]
+			if @settings.blank?
+				@UserAllowed = 'false'
+			else 
+				@UserAllowed = 'true'
+				@groupIds << group.id
+			end
+		end			
+	end
+
 	@edit = Snip.find(params[:item])
 	@latest = Snip.find(:all, :order => 'last_modified DESC', :limit => 10)
   end
@@ -82,6 +120,7 @@ class SnipController < ApplicationController
   end
 
   def delete
+
 	@snip = Snip.find(params[:item])
 	@snip.delete
 	redirect_to action: 'index', status: :found
