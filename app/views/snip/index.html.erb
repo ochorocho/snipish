@@ -39,17 +39,16 @@
 	
 </script>
 
-	<% if !params[:item].nil? %>
-<style type="text/css">
-		#snips, .browse {
-			display: none;
-			visibility: hidden;
-		}
-</style>
-	<% end %>
+<% if !params[:item].nil? %>
+	<style type="text/css">
+			#snips, .browse {
+				display: none;
+				visibility: hidden;
+			}
+	</style>
+<% end %>
 
-
-
+<% if @UserAllowed == 'true' %>
 <div class="contextual">
 <%= link_to l(:snipish_reset),
 	{:controller => "snip", :action => "index"},
@@ -132,4 +131,11 @@
 		</div>
 	</div>
 </div>
+<% else %>
+	<div id="sidebar">
+		<div class="latest">
 
+		</div>
+	</div>
+	<div id="flash_notice" class="flash error"><%= l(:snipish_noaccess) %></div>
+<% end %>

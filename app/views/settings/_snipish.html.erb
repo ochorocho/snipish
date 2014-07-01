@@ -1,0 +1,19 @@
+<% locale = User.current.language.blank? ? ::I18n.locale : User.current.language %>
+
+<% html_title l(:label_snipish_config) %>
+
+<% content_for :header_tags do %>
+
+<% end %>
+
+<h3><%= l(:snipish_headline1_settings) %></h3>
+
+	<% all_user_group = Group.find(:all) %>
+	<% all_user_group.each do |group| %>
+		<p>
+			<label for="settings_snipish_group_<%= group.id %>"><%= group.name %></label>
+			<%= check_box_tag "settings[snipish_group][#{group.id}]", group.id, @settings['snipish_group'] && @settings['snipish_group'].include?(group.id.to_s) %>
+		</p>
+	<% end %>
+
+<br><br>

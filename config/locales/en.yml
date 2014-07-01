@@ -24,3 +24,6 @@ en:
   snipish_reset: "Reset"
   snipish_code: "Code"
   snipish_edit: "Save Snippet"
+### CONFIGURATION
+  snipish_headline1_settings: "User groups allowed to use Snipish"
+  snipish_noaccess: "You do not have the permission to access this area"

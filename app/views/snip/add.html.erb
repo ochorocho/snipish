@@ -17,6 +17,7 @@
 
 <% end %>
 
+<% if @UserAllowed == 'true' %>
 <h2><%= l(:snipish_add_title) %></h2>
 
 <div id="snipish">
@@ -72,3 +73,12 @@
 		<% end -%>
 	</div>
 </div>
+
+<% else %>
+	<div id="sidebar">
+		<div class="latest">
+
+		</div>
+	</div>
+	<div id="flash_notice" class="flash error"><%= l(:snipish_noaccess) %></div>
+<% end %>

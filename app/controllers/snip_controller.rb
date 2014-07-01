@@ -5,6 +5,25 @@ class SnipController < ApplicationController
 
   def index
 
+	#### USER PERMISSION HACK
+	@usersGroup = User.current.groups.all
+	@usersGroup.each do |group|
+
+		@settings = Setting.plugin_snipish["snipish_group"]
+		@groupIds = []
+		if @settings.nil?
+			@UserAllowed = 'false'
+		else
+			@settings = Setting.plugin_snipish["snipish_group"]["#{group.id}"]
+			if @settings.blank?
+				@UserAllowed = 'false'
+			else 
+				@UserAllowed = 'true'
+				@groupIds << group.id
+			end
+		end			
+	end
+
 	if params[:per_page].nil?
 		params[:per_page] = '50'
 	end

@@ -17,6 +17,7 @@
 
 <% end %>
 
+<% if @UserAllowed == 'true' %>
 <div class="contextual">
 	<%= form_tag("/snipish_delete", method: "post", :class => "search_form") do %>
 		<%= hidden_field_tag 'item', params[:item] %>
@@ -79,3 +80,12 @@
 		<% end -%>
 	</div>
 </div>
+
+<% else %>
+	<div id="sidebar">
+		<div class="latest">
+
+		</div>
+	</div>
+	<div id="flash_notice" class="flash error"><%= l(:snipish_noaccess) %></div>
+<% end %>
