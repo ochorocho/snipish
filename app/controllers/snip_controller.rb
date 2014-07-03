@@ -44,14 +44,26 @@ class SnipController < ApplicationController
 	
 	@detail = Snip.find(params[:item])	
 	
-	@tags = '<ul class="detailTags tagit ui-widget ui-widget-content ui-corner-all">'
+	@tags = '<ul class="detailTags tagit ui-widget ui-widget-content ui-corner-all"><h3>' + l(:snipish_add_tag) + '</h3>'
 	@singleTag = @detail.tag.to_s.split(/,/)
 	@singleTag.each do |single|
 	   @tags += '<li class="tagit-choice ui-widget-content ui-state-default ui-corner-all tagit-choice-read-only"><a href="' + url_for(:controller => "snip", :action => "index", :tag => single.to_s) +  '">' + single.to_s + '</a></li>'
 	end
 	@tags += '</ul>'
+
+
+	@changeset = '<ul class="detailRefs tagit ui-widget ui-widget-content ui-corner-all"><h3>' + l(:snipish_add_ref) + '</h3>'
+	@singleChange = @detail.ref.to_s.split(/,/)
+	@singleChange.each do |single|
+	   @codeDetails = Changeset.find(single)
+	   @getRepo = Repository.find(@codeDetails.repository_id)
+	   @getProject = Project.find(@getRepo.project_id)
+	   @changeset += '<li class="tagit-choice ui-widget-content ui-state-default ui-corner-all tagit-choice-read-only"><a title="' + @codeDetails.comments + '" href="' + url_for(:controller => 'repositories', :action => 'revision', :id => @getProject.id, :repository_id => @codeDetails.repository_id, :rev => @codeDetails.revision) +  '">' + @codeDetails.comments.truncate(16, omission: '..') + '</a></li>'
+	end
+	@changeset += '</ul>'
+
 	
-	@json = {'id' => @detail.id, 'name' => @detail.name, 'description' => @detail.description, 'tag' => @tags, 'codetype' => @detail.codetype, 'author' => @detail.author, 'code' => @detail.code}
+	@json = {'id' => @detail.id, 'name' => @detail.name, 'description' => @detail.description, 'tag' => @tags, 'codetype' => @detail.codetype, 'author' => @detail.author, 'code' => @detail.code, 'ref' => @changeset}
 	
 	render json: @json
   end

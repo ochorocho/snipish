@@ -124,16 +124,34 @@ span.comitter {
 	background: transparent!important;
 }
 
-.detailTags.ui-widget-content {
+.tag {
+	width: 40%;
+	float: left;
+}
+
+.ref {
+	width: 40%;
+	float: right;
+}
+
+
+.detailTags.ui-widget-content, .detailRefs.ui-widget-content {
 	border: 0px !important;
 	float: left;
 }
 
-.detailTags li a {
+
+.detailTags li a, .detailRefs li a {
 	font-size: 12px !important;
 }
 
-ul.detailTags li.tagit-choice-read-only {
+.detailTags h3, .detailRefs h3 {
+	font-size: 10px;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
+
+ul.detailTags li.tagit-choice-read-only, ul.detailRefs li.tagit-choice-read-only {
 	padding: 0 3px 2px !important;	
 }
 
@@ -307,7 +325,7 @@ table#snips .author {
 	margin-bottom: 10px;
 }
 
-#detail .tag {
+#detail .tag, #detail .ref {
 	cursor: pointer;
 }
 

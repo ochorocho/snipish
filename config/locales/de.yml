@@ -12,7 +12,7 @@ de:
   snipish_add_name: "Name"
   snipish_add_description: "Beschreibung"
   snipish_add_tag: "Tags"
-  snipish_add_ref: "Mit Code verknüpfen"
+  snipish_add_ref: "Code-Verknüpfung"
   snipish_add_type: "Syntax"
   snipish_add_code: "Dein Schnipsel"
   snipish_add_cancel: "Abbrechen"

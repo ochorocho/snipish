@@ -24,19 +24,19 @@ function loadDetail(id) {
 				+ '<h2 class="name"><a href="?item=' + obj.id +'">' + obj.name + '</a><a href="' + EDIT_URL + '?item=' + obj.id +'" id="edit"></a></h2>'
 				+ '<div class="description">' + obj.description + '</div>'
 				+ '<div class="tag">' + obj.tag + '</div>'
+				+ '<div class="ref">' + obj.ref + '</div>'
 				+ '<div class="clear"></div>'
 				+ '<h3>Code</h3>'
 				+ '<div class="codeBlock"><pre class="brush: ' + obj.codetype + ';">' + obj.code + '</pre></div>';
 
 			$('.contextual').find('.icon-cancel').remove();		
-			$('.contextual').prepend('<a class="icon icon-cancel" href="#">Zurück</a>');				
-
-			
+			$('.contextual').prepend('<a class="icon icon-cancel" href="#">Zurück</a>');							
 			$('#snipContent').html(html);
 
 			$('.contextual .icon-cancel').on('click', function() {
 				back();
 			});
+			$("#detail .tagit-choice a").tooltip({position: { my: "left+15 center", at: "right center" } });
 
 			// TAKING CARE OF URL BUILDING
 			var title = $('title').text() + ' : ' + obj.name;
